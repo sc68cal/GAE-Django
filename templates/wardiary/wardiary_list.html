@@ -1,0 +1,34 @@
+<html>
+<head>
+<link href="/static/stylesheets/table.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/static/tablesorter/jquery-latest.js"></script> 
+<script type="text/javascript" src="/static/tablesorter/jquery.tablesorter.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+        $("#reportlist").tablesorter(); 
+    } 
+); 
+</script>
+</head>
+<body>
+<table id="reportlist" class="tablesorter">
+<thead>
+	<tr>
+	<th class="head">Report Key</th>
+	<th class="head">Date</th>
+	<th class="head">Category<th>
+	</tr>
+</thead>
+<tbody>
+	{% for object in object_list %}
+	<tr>
+	<td><a href="{% url wardiary.views.report_detail object.key %}">{{object.reportkey}}</a></td>
+	<td>{{object.date}}</td>
+	<td>{{object.category}}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+</body>
+</html>

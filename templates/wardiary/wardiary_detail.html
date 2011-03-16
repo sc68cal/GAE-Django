@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<style type="text/css">
+#map_canvas{ height:100%;}
+</style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+<script>
+function initialize(){
+	var map;
+	var loc = new google.maps.LatLng({{object.latitude}},{{object.longitude}});
+	
+	var mapOptions = {
+		zoom: 7,
+		center: loc,
+      		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+
+
+
+	map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+
+  	var marker = new google.maps.Marker({
+      		position: loc, 
+      		map: map, 
+	  });   
+}
+</script>
+</head> 
+<body onload="initialize()"> 
+  <div id="map_canvas" style="width: 640px; height: 480px;">map div</div> 
+  <div id="reportdata">
+ 	Report ID: {{object.reportkey}}<br/>
+ 	Date: {{object.date}}<br/>
+ 	Classification: {{object.classification}}<br/>
+ 	Type: {{object.type}}<br/>
+ 	Category: {{object.category}}<br />
+ 	Title: {{object.title}}<br />
+ 	Region: {{object.region}}<br />
+ 	Attack On: {{object.attackon}}<br />
+ 	Complex Attack: {{object.complexattack}}<br />
+ 	Reporting Unit: {{object.reportingunit}}<br />
+ 	Unit Name: {{object.unitname}}<br />
+ 	Unit Type: {{object.typeofunit}}<br />
+  </div>
+  
+  
+  <div id="reportcasualties">
+  <b>Casualties</b><br/>
+  Friendly Wounded In Action: {{object.friendlywia}}<br />
+  Friendlies Killed In Action: {{object.friendlykia}}<br />
+  Host Nationals Wounded In Action {{object.hostnationwia}}<br />
+  Host Nationals Killed In Action {{object.hostnationkia}}<br />
+  Civillians Wounded: {{object.civilianwia}}<br />
+  Civillians Killed: {{oject.civiliankia}}<br />
+  Enemies Wounded: {{object.enemywia}}<br />
+  Enemies Killed {{object.enemykia}}<br />
+  Enemies Detained: {{object.enemydetained}}<br />
+  </div>
+ 
+  <div id="reportsummary">{{object.summary}}</div>
+
+</body> 
+</html> 
